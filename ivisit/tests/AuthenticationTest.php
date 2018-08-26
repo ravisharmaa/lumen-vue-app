@@ -32,6 +32,10 @@ class AuthenticationTest extends TestCase
     public function registered_users_must_post_their_details()
     {
         $this->post('/login')
-            ->seeJsonEquals(['email'=>["The email field is required."], 'password'=>['The password field is required.']]);
+            ->seeJsonEquals(
+                [
+                    'email'=>["The email field is required."], 'password'=>['The password field is required.']
+                ]
+            );
     }
 }

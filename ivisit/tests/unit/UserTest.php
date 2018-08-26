@@ -17,6 +17,4 @@ class UserTest extends TestCase
         $this->actingAs($user);
         $this->assertNotEmpty($user->getToken());
     }
-
-
 }

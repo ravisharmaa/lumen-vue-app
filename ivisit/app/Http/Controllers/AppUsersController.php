@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers;
-use Tymon\JWTAuth\JWTAuth;
 
+use Tymon\JWTAuth\JWTAuth;
+use App\AppUsers;
 
 class AppUsersController extends Controller
 {
@@ -15,7 +16,4 @@ class AppUsersController extends Controller
     {
         dd($request);
     }
-
-
-
 }
