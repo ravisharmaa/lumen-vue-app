@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Exceptions\UserNotFoundException;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class AuthController extends Controller
                 'password'=>'required'
         ]);
         if (!$token = $this->auth->attempt(['email'=>$request->email, 'password'=>sha1($request->password)])) {
-            return response(['message'=>'user_not_found'], 200);
+            throw new UserNotFoundException;
         }
         return response(['token'=>$token], 200);
     }

@@ -51,6 +51,9 @@ class Handler extends ExceptionHandler
         if($e instanceof UnauthorizedHttpException){
             return response()->json(['message'=>'token_not_found'], 401);
         }
+        if($e instanceof UserNotFoundException){
+            return response()->json(['message'=>'user_not_found'], 401);
+        }
         return parent::render($request, $e);
     }
 

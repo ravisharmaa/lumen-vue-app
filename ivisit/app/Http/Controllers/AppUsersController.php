@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers;
+use App\AppUsers;
+use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
 
@@ -11,10 +13,15 @@ class AppUsersController extends Controller
         $this->middleware('jwt.auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        dd($request);
+        $appUsers = AppUsers::filter($request->get('active'))->get();
+        dd($appUsers);
+        return response()->json(['app_users'=> $appUsers],200);
     }
+
+
+
 
 
 

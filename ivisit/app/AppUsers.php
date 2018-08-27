@@ -8,27 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class AppUsers extends Model implements AuthenticatableContract, AuthorizableContract
+class AppUsers extends Model
 {
-    use Authenticatable, Authorizable;
+    protected $primaryKey = 'UserId';
     protected $table = 'AppUsers';
+    public $timestamps = false;
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+    public function scopeFilter($query, $filter)
+    {
+        is_null($filter) ? $this->all() : $query->where('ActiveFlag', $filter);
+    }
 }

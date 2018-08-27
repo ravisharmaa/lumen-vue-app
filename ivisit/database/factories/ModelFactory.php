@@ -19,3 +19,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'department'=> $faker->words(2, true)
     ];
 });
+
+$factory->define(App\AppUsers::class, function (Faker\Generator $faker) {
+    return [
+        'UserName'=>$faker->email,
+        'Password'=>sha1('password'),
+        'SalesRepDepartment'=>strtoupper($faker->words(3, true)),
+        'SalesRepName'=>$faker->name,
+        'SalesRepLanguage'=>'DE,EN,ES,FR,NL,PT',
+        'visitLimit'=>$faker->randomDigit,
+        'UserToken'=> '0.0.0',
+    ];
+});

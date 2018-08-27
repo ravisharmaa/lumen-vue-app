@@ -8,15 +8,10 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function authenticated_user_has_a_valid_token()
+    public function authenticated_user_has_a_token()
     {
-        $user = factory(App\User::class)->create([
-            'email'=>'iapple@javra.com',
-            'password'=>sha1('pass@pfconcept')
-        ]);
+        $user = factory(App\User::class)->create();
         $this->actingAs($user);
         $this->assertNotEmpty($user->getToken());
     }
-
-
 }
