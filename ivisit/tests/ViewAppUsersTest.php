@@ -38,14 +38,14 @@ class ViewAppUsersTest extends TestCase
         $this->disableExceptionHandling();
 
         factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 1
+            'ActiveFlag' => 1,
         ], 3);
 
         $this->actingAs($this->user);
 
         $data = json_decode($this->get(
             '/app-users',
-            ['HTTP_Authorization' => "Bearer " .JWTAuth::fromUser($this->user)]
+            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
         )->response->getContent(), true);
 
         $this->assertNotEmpty($data['app_users']);
@@ -54,24 +54,23 @@ class ViewAppUsersTest extends TestCase
     /**
      * @test
      */
-
     public function authorised_user_can_filter_app_users_by_status()
     {
         $this->disableExceptionHandling();
 
         factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 1
+            'ActiveFlag' => 1,
         ], 3);
         factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 0
+            'ActiveFlag' => 0,
         ], 3);
 
         $this->actingAs($this->user);
 
-        $this->get('/app-users?active=1', ['HTTP_Authorization' => 'Bearer ' . JWTAuth::fromUser($this->user)])
+        $this->get('/app-users?active=1', ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)])
             ->seeJsonStructure(['app_users']);
 
-        $this->get('/app-users?active=0', ['HTTP_Authorization' => 'Bearer ' . JWTAuth::fromUser($this->user)])
+        $this->get('/app-users?active=0', ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)])
             ->seeJsonStructure(['app_users']);
     }
 }

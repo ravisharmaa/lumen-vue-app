@@ -47,7 +47,7 @@ class AppUsersController extends Controller
             'UserName' => 'required',
             'SalesRepName' => 'required',
             'SalesRepDepartment' => 'required',
-            'Password'=>'required|confirmed'
+            'Password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {

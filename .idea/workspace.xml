@@ -13,7 +13,35 @@
     <pharConfigPath>$PROJECT_DIR$/ivisit/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="CreateAppUsersTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ivisit/tests/CreateAppUsersTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="403">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthenticationTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="535">
+              <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppUsersController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Controllers/AppUsersController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="623">
+              <caret line="54" column="9" lean-forward="true" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,8 +66,11 @@
         <option value="$PROJECT_DIR$/ivisit/composer.json" />
         <option value="$PROJECT_DIR$/ivisit/config/auth.php" />
         <option value="$PROJECT_DIR$/ivisit/tests/CanLogIntoApplicationTest.php" />
-        <option value="$PROJECT_DIR$/ivisit/.env" />
         <option value="$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php" />
+        <option value="$PROJECT_DIR$/ivisit/.env" />
+        <option value="$PROJECT_DIR$/ivisit/vendor/tymon/jwt-auth/src/Http/Middleware/BaseMiddleware.php" />
+        <option value="$PROJECT_DIR$/ivisit/tests/ViewAppUsersTest.php" />
+        <option value="$PROJECT_DIR$/ivisit/tests/CreateAppUsersTest.php" />
         <option value="$PROJECT_DIR$/ivisit/app/Http/Controllers/AppUsersController.php" />
       </list>
     </option>
@@ -53,7 +84,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1">
     <include_path>
       <path value="$PROJECT_DIR$/ivisit/vendor/sebastian/recursion-context" />
       <path value="$PROJECT_DIR$/ivisit/vendor/sebastian/exporter" />
@@ -156,6 +190,11 @@
               <item name="lumen-vue-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="lumen-vue-app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="lumen-vue-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lumen-vue-app" type="462c0819:PsiDirectoryNode" />
+              <item name="ivisit" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -168,7 +207,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -187,6 +226,72 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="PHPUnit.AuthenticationTest.guests_cannot_receive_a_token">
+    <configuration name="AuthenticationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner class="AuthenticationTest" configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit" file="$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php" scope="Class" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration name="AuthenticationTest.guests_cannot_receive_a_token" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner class="AuthenticationTest" configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit" file="$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php" method="guests_cannot_receive_a_token" scope="Method" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration name="CreateAppUsersTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner class="CreateAppUsersTest" configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit" file="$PROJECT_DIR$/ivisit/tests/CreateAppUsersTest.php" scope="Class" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration name="CreateAppUsersTest.authorised_user_can_create_app_users" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner class="CreateAppUsersTest" configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit" file="$PROJECT_DIR$/ivisit/tests/CreateAppUsersTest.php" method="authorised_user_can_create_app_users" scope="Method" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit" use_alternative_configuration_file="true" />
+    </configuration>
+    <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <CommandLine>
+        <envs>
+          <env name="PHP_UNIT" value="~/Work/lumen-vue-app/ivisit" />
+        </envs>
+      </CommandLine>
+      <TestRunner configuration_file="$PROJECT_DIR$/ivisit/phpunit.xml" directory="$PROJECT_DIR$/ivisit/tests" use_alternative_configuration_file="true" />
+    </configuration>
+    <list>
+      <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.CreateAppUsersTest.authorised_user_can_create_app_users" />
+      <item itemvalue="PHPUnit.CreateAppUsersTest" />
+      <item itemvalue="PHPUnit.AuthenticationTest" />
+      <item itemvalue="PHPUnit.AuthenticationTest.guests_cannot_receive_a_token" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.AuthenticationTest.guests_cannot_receive_a_token" />
+        <item itemvalue="PHPUnit.tests" />
+        <item itemvalue="PHPUnit.CreateAppUsersTest.authorised_user_can_create_app_users" />
+        <item itemvalue="PHPUnit.CreateAppUsersTest" />
+        <item itemvalue="PHPUnit.AuthenticationTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -201,23 +306,56 @@
       <workItem from="1534739470159" duration="3495000" />
       <workItem from="1534940459275" duration="1774000" />
       <workItem from="1535246620769" duration="322000" />
+      <workItem from="1535472933184" duration="3243000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="CreateAppUsersTest_guest_cannot_create_app_users - 2018.08.28 at 22h 59m 01s.xml">
+      <configuration name="CreateAppUsersTest.guest_cannot_create_app_users" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AuthenticationTest - 2018.08.28 at 22h 59m 22s.xml">
+      <configuration name="AuthenticationTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest - 2018.08.28 at 22h 59m 52s.xml">
+      <configuration name="CreateAppUsersTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest - 2018.08.28 at 23h 00m 14s.xml">
+      <configuration name="CreateAppUsersTest" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest_authorised_user_can_create_app_users - 2018.08.28 at 23h 00m 38s.xml">
+      <configuration name="CreateAppUsersTest.authorised_user_can_create_app_users" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest_authorised_user_can_create_app_users - 2018.08.28 at 23h 02m 29s.xml">
+      <configuration name="CreateAppUsersTest.authorised_user_can_create_app_users" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest_authorised_user_can_create_app_users - 2018.08.28 at 23h 03m 56s.xml">
+      <configuration name="CreateAppUsersTest.authorised_user_can_create_app_users" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="CreateAppUsersTest_authorised_user_can_create_app_users - 2018.08.28 at 23h 04m 28s.xml">
+      <configuration name="CreateAppUsersTest.authorised_user_can_create_app_users" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="tests - 2018.08.28 at 23h 05m 02s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="AuthenticationTest_guests_cannot_receive_a_token - 2018.08.28 at 23h 05m 14s.xml">
+      <configuration name="AuthenticationTest.guests_cannot_receive_a_token" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18053000" />
+    <option name="totallyTimeSpent" value="21296000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="981" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="981" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14226191" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19702381" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295099" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4316997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.34197408" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -243,9 +381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding>
-            <element signature="e#39#65#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -339,13 +474,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ivisit/tests/CanLogIntoApplication.php" />
-    <entry file="file://$PROJECT_DIR$/ivisit/phpunit.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ivisit/database/factories/ModelFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -383,14 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ivisit/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ivisit/.env" />
     <entry file="file://$PROJECT_DIR$/ivisit/config/auth.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
@@ -406,16 +526,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ivisit/tests/CanLogIntoApplicationTest.php" />
-    <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Controllers/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-          <folding>
-            <element signature="e#39#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Middleware/Authenticate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -427,30 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Controllers/AppUsersController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding>
-            <element signature="e#39#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="38" column="14" lean-forward="true" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ivisit/tests/ViewAppUsersTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -472,6 +558,111 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
           <caret line="103" column="30" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Controllers/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/symfony/http-kernel/Exception/HttpException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/symfony/http-kernel/Exception/UnauthorizedHttpException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/tymon/jwt-auth/src/JWT.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="377" column="20" selection-start-line="377" selection-start-column="20" selection-end-line="377" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/app/Exceptions/Handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="48" column="50" lean-forward="true" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/tymon/jwt-auth/src/Http/Parser/Parser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="113" column="20" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/tests/ViewAppUsersTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-543">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/laravel/lumen-framework/src/Testing/Concerns/MakesHttpRequests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/vendor/tymon/jwt-auth/src/Http/Middleware/BaseMiddleware.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-191">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="27" column="10" lean-forward="true" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/app/Http/Controllers/AppUsersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="54" column="9" lean-forward="true" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/tests/AuthenticationTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ivisit/tests/CreateAppUsersTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
         </state>
       </provider>
     </entry>

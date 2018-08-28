@@ -29,7 +29,7 @@ class CreateAppUsersTest extends TestCase
      */
     public function authorised_user_can_create_app_users()
     {
-        $this->actingAs($this->user);
+        $this->disableExceptionHandling()->actingAs($this->user);
         $appUser = factory(App\AppUsers::class)->make(['UserName' => 'creation@gmail.com']);
 
         $this->post(
