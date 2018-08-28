@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Exceptions\UserNotFoundException;
@@ -14,15 +15,24 @@ class AuthController extends Controller
         $this->auth = $auth;
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     *
+     * @throws UserNotFoundException
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(Request $request)
     {
         $this->validate($request, [
                 'email' => 'required',
-                'password'=>'required'
+                'password' => 'required',
         ]);
-        if (!$token = $this->auth->attempt(['email'=>$request->email, 'password'=>sha1($request->password)])) {
-            throw new UserNotFoundException;
+        if (!$token = $this->auth->attempt(['email' => $request->email, 'password' => sha1($request->password)])) {
+            throw new UserNotFoundException();
         }
-        return response(['token'=>$token], 200);
+
+        return response(['token' => $token], 200);
     }
 }

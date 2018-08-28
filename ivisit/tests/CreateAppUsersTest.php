@@ -16,7 +16,6 @@ class CreateAppUsersTest extends TestCase
     /**
      * @test
      */
-
     public function guest_cannot_create_app_users()
     {
         $this->disableExceptionHandling();
@@ -28,22 +27,30 @@ class CreateAppUsersTest extends TestCase
     /**
      * @test
      */
-
     public function authorised_user_can_create_app_users()
     {
-        $this->disableExceptionHandling()->actingAs($this->user);
-        $appUser = factory(App\AppUsers::class)->make(['UserName'=>'creation@gmail.com']);
+        $this->actingAs($this->user);
+        $appUser = factory(App\AppUsers::class)->make(['UserName' => 'creation@gmail.com']);
 
         $this->post(
             '/app-users/store',
-             $appUser->toArray(),
+            $appUser->toArray(),
             ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
         );
-        $this->seeInDatabase('AppUsers', ['UserName'=>'creation@gmail.com']);
+        $this->seeInDatabase('AppUsers', ['UserName' => 'creation@gmail.com']);
     }
 
-   
+    /**
+     * @test
+     */
+    public function authenticated_user_must_fill_form_attributes()
+    {
+        $this->actingAs($this->user);
 
-
-
+        $this->post(
+            '/app-users/store',
+            [],
+            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
+        )->seeJsonStructure(['errors'])->assertResponseStatus(422);
+    }
 }

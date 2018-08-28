@@ -13,7 +13,7 @@ class AuthenticationTest extends TestCase
 
         factory(\App\User::class)->create([
             'email' => 'iapple@javra.com',
-            'password' => sha1('pass@pfconcept')
+            'password' => sha1('pass@pfconcept'),
         ]);
         $this->post('/login', ['email' => 'iapple@javra.com', 'password' => 'pass@pfconcept'])
             ->seeJsonStructure(['token'])
