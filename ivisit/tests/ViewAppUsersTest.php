@@ -27,7 +27,7 @@ class ViewAppUsersTest extends TestCase
     {
         $this->actingAs($this->user)->json('GET', '/app-users', ['HTTP_Authorization' => ''])
             ->seeJsonEquals(['message' => 'token_not_found'])
-            ->assertResponseStatus(401);
+            ->assertResponseStatus(404);
     }
 
     /**
@@ -36,11 +36,16 @@ class ViewAppUsersTest extends TestCase
     public function authorized_user_can_browse_app_users()
     {
         $this->disableExceptionHandling();
+
+        factory(App\AppUsers::class)->create([
+            'ActiveFlag' => 1
+        ], 3);
+
         $this->actingAs($this->user);
 
         $data = json_decode($this->get(
             '/app-users',
-            ['HTTP_Authorization' => "Bearer " . JWTAuth::fromUser($this->user)]
+            ['HTTP_Authorization' => "Bearer " .JWTAuth::fromUser($this->user)]
         )->response->getContent(), true);
 
         $this->assertNotEmpty($data['app_users']);

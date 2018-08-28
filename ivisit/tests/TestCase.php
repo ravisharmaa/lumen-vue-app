@@ -23,5 +23,6 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
                 throw $e;
             }
         });
+        return $this;
     }
 }

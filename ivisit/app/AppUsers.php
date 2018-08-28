@@ -14,8 +14,10 @@ class AppUsers extends Model
     protected $table = 'AppUsers';
     public $timestamps = false;
 
+    protected $guarded = [];
+
     public function scopeFilter($query, $filter)
     {
-        is_null($filter) ? $this->all() : $query->where('ActiveFlag', $filter);
+        return is_null($filter) ? self::all() : $query->where('ActiveFlag', $filter)->get();
     }
 }

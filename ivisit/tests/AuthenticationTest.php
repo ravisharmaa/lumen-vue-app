@@ -25,22 +25,14 @@ class AuthenticationTest extends TestCase
     {
         $this->json('POST', '/login', ['email' => 'nonexisting@gmail.com', 'password' => 'hello123'])
             ->seeJsonContains(['message' => 'user_not_found'])
-            ->seeStatusCode(401);
+            ->seeStatusCode(404);
     }
 
     /** @test */
     public function registered_users_must_post_their_details()
     {
         $this->post('/login')
-<<<<<<< HEAD
             ->seeJsonStructure(['email', 'password'])
             ->seeStatusCode(422);
-=======
-            ->seeJsonEquals(
-                [
-                    'email'=>["The email field is required."], 'password'=>['The password field is required.']
-                ]
-            );
->>>>>>> 0bb4adce42fd4cfb3b935953cff7ca4bb3e258b6
     }
 }

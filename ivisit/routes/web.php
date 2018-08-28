@@ -13,5 +13,6 @@
 
 $router->post('/login', 'AuthController@login');
 $router->get('/app-users', 'AppUsersController@index');
+$router->post('/app-users/store','AppUsersController@store');
 
 
