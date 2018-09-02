@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ViewAppUsersTest extends TestCase
 {
@@ -17,6 +16,7 @@ class ViewAppUsersTest extends TestCase
     public function guest_cannot_view_app_users()
     {
         $this->disableExceptionHandling();
+
         $this->json('GET', '/app-users')
             ->seeJsonEquals(['message' => 'Unauthorized.'])
             ->assertResponseStatus(401);
@@ -37,9 +37,7 @@ class ViewAppUsersTest extends TestCase
     {
         $this->disableExceptionHandling();
 
-        factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 1,
-        ], 3);
+        factory(App\AppUsers::class,3)->create();
 
         $this->actingAs($this->user);
 
@@ -56,21 +54,14 @@ class ViewAppUsersTest extends TestCase
      */
     public function authorised_user_can_filter_app_users_by_status()
     {
-        $this->disableExceptionHandling();
+        $this->disableExceptionHandling()->actingAs($this->user);
 
-        factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 1,
-        ], 3);
-        factory(App\AppUsers::class)->create([
-            'ActiveFlag' => 0,
-        ], 3);
+        factory(App\AppUsers::class, 3)->state('active')->create();
 
-        $this->actingAs($this->user);
+        factory(App\AppUsers::class, 3)->state('inactive')->create();
 
-        $this->get('/app-users?active=1', ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)])
-            ->seeJsonStructure(['app_users']);
+        $activeUsers = json_decode($this->getAsAuthenticated('app-users?active=1', $this->user)
+                    ->response->getContent(),true);
 
-        $this->get('/app-users?active=0', ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)])
-            ->seeJsonStructure(['app_users']);
     }
 }

@@ -47,11 +47,11 @@ class AppUsersController extends Controller
             'UserName' => 'required',
             'SalesRepName' => 'required',
             'SalesRepDepartment' => 'required',
-
+            'Password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {
-            return response(['errors' => $validator->getMessageBag()], 422);
+            return response()->json(['errors' => $validator->getMessageBag()], 422);
         }
 
         AppUsers::create($request->all());

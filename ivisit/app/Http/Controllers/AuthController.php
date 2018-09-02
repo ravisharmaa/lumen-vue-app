@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\UserNotFoundException;
+use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\JWTAuth;
 use Illuminate\Http\Request;
 
@@ -21,14 +22,18 @@ class AuthController extends Controller
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      *
      * @throws UserNotFoundException
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
     {
-        $this->validate($request, [
-                'email' => 'required',
-                'password' => 'required',
+        $validator = Validator::make($request->all(), [
+           'email' => 'required | email',
+           'password' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->getMessageBag()], 422);
+        }
+
         if (!$token = $this->auth->attempt(['email' => $request->email, 'password' => sha1($request->password)])) {
             throw new UserNotFoundException();
         }

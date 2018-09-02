@@ -31,3 +31,12 @@ $factory->define(App\AppUsers::class, function (Faker\Generator $faker) {
         'UserToken'=> '0.0.0',
     ];
 });
+
+$factory->state(App\AppUsers::class, 'active', [
+    'ActiveFlag'=>true
+]);
+
+$factory->state(App\AppUsers::class, 'inactive', [
+    'ActiveFlag'=>false
+]);
+
