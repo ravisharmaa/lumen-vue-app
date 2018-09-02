@@ -14,29 +14,33 @@
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'userName' => $faker->name,
-        'email' =>    $faker->email,
-        'password' => sha1('password'),
-        'department'=> $faker->words(2, true)
+        'email' => $faker->email,
+        'password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', //sha1('password')
+        'department' => $faker->words(2, true),
     ];
 });
 
 $factory->define(App\AppUsers::class, function (Faker\Generator $faker) {
     return [
-        'UserName'=>$faker->email,
-        'Password'=>sha1('password'),
-        'SalesRepDepartment'=>strtoupper($faker->words(3, true)),
-        'SalesRepName'=>$faker->name,
-        'SalesRepLanguage'=>'DE,EN,ES,FR,NL,PT',
-        'visitLimit'=>$faker->randomDigit,
-        'UserToken'=> '0.0.0',
+        'UserName' => $faker->email,
+        'Password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', //sha1('password')
+        'SalesRepDepartment' => strtoupper($faker->words(3, true)),
+        'SalesRepName' => $faker->name,
+        'SalesRepLanguage' => 'DE,EN,ES,FR,NL,PT',
+        'visitLimit' => $faker->randomDigit,
+        'UserToken' => '0.0.0',
     ];
 });
 
 $factory->state(App\AppUsers::class, 'active', [
-    'ActiveFlag'=>true
+    'ActiveFlag' => true,
 ]);
 
 $factory->state(App\AppUsers::class, 'inactive', [
-    'ActiveFlag'=>false
+    'ActiveFlag' => false,
 ]);
 
+$factory->state(App\AppUsers::class, 'password_confirmation', [
+    'Password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
+    'Password_confirmation' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
+]);

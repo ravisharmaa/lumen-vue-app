@@ -1,7 +1,6 @@
 <?php
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 class CreateAppUsersTest extends TestCase
 {
@@ -19,9 +18,8 @@ class CreateAppUsersTest extends TestCase
      */
     public function guest_cannot_create_app_users()
     {
-        $this->disableExceptionHandling();
-
-        $this->json('POST', '/app-users/store')
+        $this->disableExceptionHandling()
+            ->json('POST', '/app-users/store')
             ->seeJsonEquals(['message' => 'Unauthorized.'])
             ->assertResponseStatus(401);
     }
@@ -32,13 +30,12 @@ class CreateAppUsersTest extends TestCase
     public function authorised_user_can_create_app_users()
     {
         $this->disableExceptionHandling()->actingAs($this->user);
-        $appUser = factory(App\AppUsers::class)->make(['UserName' => 'creation@gmail.com']);
 
-        $this->post(
-            '/app-users/store',
-            $appUser->toArray(),
-            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
-        );
+        $appUser = factory(App\AppUsers::class)->state('password_confirmation')
+            ->make(['UserName' => 'creation@gmail.com']);
+
+        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user);
+
         $this->seeInDatabase('AppUsers', ['UserName' => 'creation@gmail.com']);
     }
 
@@ -47,13 +44,9 @@ class CreateAppUsersTest extends TestCase
      */
     public function authenticated_user_must_post_required_attributes()
     {
-        $this->actingAs($this->user);
-
-        $this->post(
-            '/app-users/store',
-            [],
-            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
-        )->seeJsonStructure(['errors'])->assertResponseStatus(422);
+        $this->actingAs($this->user)
+            ->postAsAuthenticated('/app-users/store', [], $this->user)
+            ->seeJsonStructure(['errors'])->assertResponseStatus(422);
     }
 
     /**
@@ -65,16 +58,18 @@ class CreateAppUsersTest extends TestCase
 
         $appUser = factory(App\AppUsers::class)->make([
             'UserName' => 'test@gmail.com',
-            'Password' => sha1('password'),
-            'Password_confirmation' => sha1('password'),
+            'Password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
+            'Password_confirmation' => 'baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
         ]);
 
-        $this->post(
-            'app-users/store',
-            $appUser->toArray(),
-            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
-        );
+        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user)
+             ->seeJsonStructure(['errors'])->assertResponseStatus(422);
 
-        $this->seeInDatabase('AppUsers', ['UserName' => 'test@gmail.com']);
+        $appUser = factory(App\AppUsers::class)->state('password_confirmation')
+            ->make(['UserName' => 'creation@gmail.com']);
+
+        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user);
+
+        $this->seeInDatabase('AppUsers', ['UserName' => 'creation@gmail.com']);
     }
 }

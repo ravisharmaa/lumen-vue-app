@@ -8,10 +8,12 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function authenticated_user_has_a_token()
+    public function a_user_has_a_token()
     {
         $user = factory(App\User::class)->create();
         $this->actingAs($user);
         $this->assertNotEmpty($user->getToken());
     }
+
+
 }

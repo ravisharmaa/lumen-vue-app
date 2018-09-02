@@ -35,16 +35,12 @@ class ViewAppUsersTest extends TestCase
      */
     public function authorized_user_can_browse_app_users()
     {
-        $this->disableExceptionHandling();
+        $this->disableExceptionHandling()->actingAs($this->user);
 
-        factory(App\AppUsers::class,3)->create();
+        factory(App\AppUsers::class, 3)->create();
 
-        $this->actingAs($this->user);
-
-        $data = json_decode($this->get(
-            '/app-users',
-            ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($this->user)]
-        )->response->getContent(), true);
+        $data = json_decode($this->getAsAuthenticated('/app-users', $this->user)
+            ->response->getContent(), true);
 
         $this->assertNotEmpty($data['app_users']);
     }
@@ -60,8 +56,16 @@ class ViewAppUsersTest extends TestCase
 
         factory(App\AppUsers::class, 3)->state('inactive')->create();
 
-        $activeUsers = json_decode($this->getAsAuthenticated('app-users?active=1', $this->user)
-                    ->response->getContent(),true);
+        $activeUser = json_decode($this->getAsAuthenticated('app-users?active=1', $this->user)
+            ->response->getContent(), true);
+
+        $this->assertNotEmpty($activeUser['app_users']);
+
+        $inActiveUser = json_decode($this->getAsAuthenticated('app-users?active=0', $this->user)
+            ->response->getContent(), true);
+
+        $this->assertNotEmpty($inActiveUser['app_users']);
+
 
     }
 }

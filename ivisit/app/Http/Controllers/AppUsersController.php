@@ -54,7 +54,8 @@ class AppUsersController extends Controller
             return response()->json(['errors' => $validator->getMessageBag()], 422);
         }
 
-        AppUsers::create($request->all());
+
+        AppUsers::create($request->except(['Password_confirmation']));
 
         return response(['created' => true], 200);
     }

@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
             return response()->json(['message'=>'token_not_found'], 404);
         }
         if($e instanceof UserNotFoundException){
-            return response()->json(['message'=>'user_not_found'], 404);
+            return response()->json(['message'=>'Sorry try again'], 404);
         }
         return parent::render($request, $e);
     }
