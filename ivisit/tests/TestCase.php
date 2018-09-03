@@ -36,17 +36,18 @@ abstract class TestCase extends Laravel\Lumen\Testing\TestCase
         return $this;
     }
 
-    public function getAsAuthenticated($uri,$user)
+    public function getAsAuthenticated($uri, $user)
     {
-        $this->get($uri, ['HTTP_Authorization'=>'Bearer '.JWTAuth::fromUser($user)]);
+        $this->get($uri, ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($user)]);
 
         return $this;
     }
 
-    public function postAsAuthenticated($uri, array $data, $user)
+    public function postAsAuthenticated($method, $uri, array $data, $user)
     {
-        $this->post($uri, $data, ['HTTP_Authorization'=>'Bearer '.JWTAuth::fromUser($user)]);
+        $this->$method($uri, $data, ['HTTP_Authorization' => 'Bearer '.JWTAuth::fromUser($user)]);
 
         return $this;
     }
+
 }

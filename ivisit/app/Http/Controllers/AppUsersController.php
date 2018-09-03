@@ -21,7 +21,7 @@ class AppUsersController extends Controller
     }
 
     /**
-     * Display a listing of resource.
+     * Displays a listing of resource.
      *
      * @param Request $request
      *
@@ -54,9 +54,34 @@ class AppUsersController extends Controller
             return response()->json(['errors' => $validator->getMessageBag()], 422);
         }
 
-
         AppUsers::create($request->except(['Password_confirmation']));
 
         return response(['created' => true], 200);
+    }
+
+    /**
+     * Finds a resource.
+     * @param $id
+     *
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function edit($id)
+    {
+        return response(['app_user' => AppUsers::findOrFail($id)], 200);
+    }
+
+    /**
+     * Updates a resource.
+     * @param $id
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
+    public function update($id, Request $request)
+    {
+
+        AppUsers::findOrFail($id)->update();
+
+        return response(['message' => 'Resource Updated'], 200);
     }
 }

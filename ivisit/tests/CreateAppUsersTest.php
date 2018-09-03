@@ -34,7 +34,7 @@ class CreateAppUsersTest extends TestCase
         $appUser = factory(App\AppUsers::class)->state('password_confirmation')
             ->make(['UserName' => 'creation@gmail.com']);
 
-        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user);
+        $this->postAsAuthenticated('post','/app-users/store', $appUser->toArray(), $this->user);
 
         $this->seeInDatabase('AppUsers', ['UserName' => 'creation@gmail.com']);
     }
@@ -45,7 +45,7 @@ class CreateAppUsersTest extends TestCase
     public function authenticated_user_must_post_required_attributes()
     {
         $this->actingAs($this->user)
-            ->postAsAuthenticated('/app-users/store', [], $this->user)
+            ->postAsAuthenticated('post','/app-users/store', [], $this->user)
             ->seeJsonStructure(['errors'])->assertResponseStatus(422);
     }
 
@@ -56,19 +56,15 @@ class CreateAppUsersTest extends TestCase
     {
         $this->disableExceptionHandling()->actingAs($this->user);
 
-        $appUser = factory(App\AppUsers::class)->make([
-            'UserName' => 'test@gmail.com',
-            'Password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
-            'Password_confirmation' => 'baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
-        ]);
+        $appUser = factory(App\AppUsers::class)->make();
 
-        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user)
+        $this->postAsAuthenticated('post','/app-users/store', $appUser->toArray(), $this->user)
              ->seeJsonStructure(['errors'])->assertResponseStatus(422);
 
         $appUser = factory(App\AppUsers::class)->state('password_confirmation')
             ->make(['UserName' => 'creation@gmail.com']);
 
-        $this->postAsAuthenticated('/app-users/store', $appUser->toArray(), $this->user);
+        $this->postAsAuthenticated('post','/app-users/store', $appUser->toArray(), $this->user);
 
         $this->seeInDatabase('AppUsers', ['UserName' => 'creation@gmail.com']);
     }
