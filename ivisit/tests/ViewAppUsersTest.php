@@ -65,7 +65,5 @@ class ViewAppUsersTest extends TestCase
             ->response->getContent(), true);
 
         $this->assertNotEmpty($inActiveUser['app_users']);
-
-
     }
 }

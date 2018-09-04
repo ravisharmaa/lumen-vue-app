@@ -1,29 +1,30 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ravibastola
- * Date: 9/2/18
- * Time: 6:23 PM.
+ * User: ravi
+ * Date: 9/4/18
+ * Time: 3:31 PM.
  */
 
 namespace App\Http\Requests;
-
-use Illuminate\Http\Request;
+use App\Exceptions\ValidationFailedException;
 use Illuminate\Support\Facades\Validator;
 
-class LoginRequest
+
+class LoginRequest extends ValidationRequest
 {
+    /**
+     * @throws ValidationFailedException
+     */
     public function validate()
     {
-        $validator = Validator::make((new Request())->all(), [
+        $validator = Validator::make($this->request->all(), [
             'email' => 'required | email',
             'password' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->getMessageBag()], 422);
+            throw new ValidationFailedException($validator);
         }
-
-        return $this;
     }
 }

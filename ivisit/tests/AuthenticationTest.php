@@ -13,11 +13,9 @@ class AuthenticationTest extends TestCase
     {
         $this->disableExceptionHandling();
 
-        factory(\App\User::class)->create([
-            'email' => 'test@user.com',
-            'password' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
-        ]);
-        $this->post('/login', ['email' => 'test@user.com', 'password' => 'password'])
+        $user = factory(\App\User::class)->create();
+
+        $this->post('/login', ['email' => $user->email, 'password' => 'password'])
             ->seeJsonStructure(['token'])
             ->seeStatusCode(200);
     }
@@ -27,7 +25,7 @@ class AuthenticationTest extends TestCase
      */
     public function guests_cannot_receive_a_token()
     {
-        $this->json('POST', '/login', ['email' => 'nonexisting@gmail.com', 'password' => 'hello123'])
+        $this->json('POST', '/login', ['email' => 'nonexisting@example.com', 'password' => 'hello123'])
             ->seeJsonContains(['message' => 'Sorry try again'])
             ->seeStatusCode(404);
     }
@@ -37,7 +35,7 @@ class AuthenticationTest extends TestCase
      */
     public function user_must_post_email()
     {
-        $this->post('/login', ['email' => null, 'password' => 'password1234'])
+        $this->disableExceptionHandling()->post('/login', ['password' => 'password1234'])
             ->seeJsonStructure(['errors'])
             ->seeStatusCode(422);
     }
@@ -57,7 +55,7 @@ class AuthenticationTest extends TestCase
      */
     public function user_must_post_password()
     {
-        $this->post('/login', ['email' => 'test@email.com', 'password' => null])
+        $this->post('/login', ['email' => 'test@example.com'])
             ->seeJsonStructure(['errors'])
             ->seeStatusCode(422);
     }

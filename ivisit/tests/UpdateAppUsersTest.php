@@ -63,7 +63,6 @@ class UpdateAppUsersTest extends TestCase
     /**
      * @test
      */
-
     public function authorised_user_must_post_required_attributes()
     {
         $this->disableExceptionHandling()->actingAs($this->user);

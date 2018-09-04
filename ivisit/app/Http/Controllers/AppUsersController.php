@@ -61,6 +61,7 @@ class AppUsersController extends Controller
 
     /**
      * Finds a resource.
+     *
      * @param $id
      *
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
@@ -72,6 +73,7 @@ class AppUsersController extends Controller
 
     /**
      * Updates a resource.
+     *
      * @param $id
      * @param Request $request
      *
@@ -79,8 +81,7 @@ class AppUsersController extends Controller
      */
     public function update($id, Request $request)
     {
-
-        AppUsers::findOrFail($id)->update();
+        AppUsers::findOrFail($id)->update($request->all());
 
         return response(['message' => 'Resource Updated'], 200);
     }
