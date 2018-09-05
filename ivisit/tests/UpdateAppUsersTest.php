@@ -28,21 +28,21 @@ class UpdateAppUsersTest extends TestCase
      */
     public function authorised_user_can_update_app_users()
     {
-        $this->disableExceptionHandling()->actingAs($this->user);
+        $this->actingAs($this->user);
 
         factory(App\AppUsers::class)->create([
             'UserName' => 'existing@test.com',
         ]);
-        $update = factory(App\AppUsers::class)->make([
+        $update = factory(App\AppUsers::class)->state('password_confirmation')->make([
             'UserName' => 'update@test.com',
         ]);
 
-        $this->postAsAuthenticated('put','app-users/1/update', $update->toArray(), $this->user);
+        $this->postAsAuthenticated('put', 'app-users/1/update', $update->toArray(), $this->user);
 
         $this->notSeeInDatabase('AppUsers', ['UserName' => 'existing@test.com']);
 
         $this->seeInDatabase('AppUsers', ['UserName' => 'update@test.com'])
-            ->seeJsonEquals(['message'=>'Resource Updated'])
+            ->seeJsonEquals(['message' => 'Resource Updated'])
             ->assertResponseStatus(200);
     }
 
@@ -53,9 +53,9 @@ class UpdateAppUsersTest extends TestCase
     {
         $this->actingAs($this->user);
 
-        $update = factory(App\AppUsers::class)->make();
+        $update = factory(App\AppUsers::class)->state('password_confirmation')->make();
 
-        $this->postAsAuthenticated('put','app-users/1/update', $update->toArray(), $this->user)
+        $this->postAsAuthenticated('put', 'app-users/1/update', $update->toArray(), $this->user)
             ->seeJsonEquals(['message' => 'User Not found'])
             ->assertResponseStatus(404);
     }
@@ -65,17 +65,12 @@ class UpdateAppUsersTest extends TestCase
      */
     public function authorised_user_must_post_required_attributes()
     {
-        $this->disableExceptionHandling()->actingAs($this->user);
+        $this->actingAs($this->user);
 
         factory(App\AppUsers::class)->create();
 
-        $this->postAsAuthenticated('put','app-users/1/update',[], $this->user)
-            ->seeJsonEquals(['message' => 'Resource Updated'])
-            ->assertResponseStatus(200);
-
+        $this->postAsAuthenticated('put', 'app-users/1/update', [], $this->user)
+            ->seeJsonStructure(['errors'])
+            ->assertResponseStatus(422);
     }
-
-
-
-
 }

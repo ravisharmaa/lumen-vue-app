@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Exceptions\ValidationFailedException;
 
-class LoginRequest extends ValidationRequest
+class AppUsersRequest extends ValidationRequest
 {
     /**
      * @param Request $request
@@ -21,8 +21,10 @@ class LoginRequest extends ValidationRequest
     public function validate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required | email',
-            'password' => 'required',
+            'UserName' => 'required',
+            'SalesRepName' => 'required',
+            'SalesRepDepartment' => 'required',
+            'Password' => 'required|confirmed',
         ]);
 
         if ($validator->fails()) {

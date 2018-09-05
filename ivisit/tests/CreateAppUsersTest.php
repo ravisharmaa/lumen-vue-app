@@ -54,7 +54,7 @@ class CreateAppUsersTest extends TestCase
      */
     public function authenticated_user_must_match_password_attributes()
     {
-        $this->disableExceptionHandling()->actingAs($this->user);
+        $this->actingAs($this->user);
 
         $appUser = factory(App\AppUsers::class)->make();
 

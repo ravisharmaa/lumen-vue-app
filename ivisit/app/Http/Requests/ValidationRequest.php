@@ -11,19 +11,5 @@ use Illuminate\Http\Request;
 
 abstract class ValidationRequest
 {
-    /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * ValidationRequest constructor.
-     * @param Request $request
-     */
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
-
-    abstract public function validate();
+    abstract public function validate(Request $request);
 }

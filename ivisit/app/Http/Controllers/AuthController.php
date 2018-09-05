@@ -24,9 +24,9 @@ class AuthController extends Controller
      * @throws ValidationException
      * @throws UserNotFoundException
      */
-    public function login(Request $request)
+    public function login(Request $request, LoginRequest $loginRequest)
     {
-        (new LoginRequest($request))->validate();
+        $loginRequest->validate($request);
 
         if (!$token = $this->auth->attempt(['email' => $request->email, 'password' => sha1($request->password)])) {
             throw new UserNotFoundException;

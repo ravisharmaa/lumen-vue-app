@@ -35,7 +35,7 @@ class AuthenticationTest extends TestCase
      */
     public function user_must_post_email()
     {
-        $this->disableExceptionHandling()->post('/login', ['password' => 'password1234'])
+        $this->post('/login', ['password' => 'password1234'])
             ->seeJsonStructure(['errors'])
             ->seeStatusCode(422);
     }

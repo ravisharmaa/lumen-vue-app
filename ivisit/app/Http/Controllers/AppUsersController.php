@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AppUsers;
+use App\Exceptions\ValidationFailedException;
+use App\Http\Requests\AppUsersRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\JWTAuth;
 
 class AppUsersController extends Controller
@@ -35,25 +36,14 @@ class AppUsersController extends Controller
     }
 
     /**
-     * Stores a resource.
-     *
      * @param Request $request
-     *
+     * @param AppUsersRequest $appUsersRequest
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     * @throws ValidationFailedException
      */
-    public function store(Request $request)
+    public function store(Request $request, AppUsersRequest $appUsersRequest)
     {
-        $validator = Validator::make($request->all(), [
-            'UserName' => 'required',
-            'SalesRepName' => 'required',
-            'SalesRepDepartment' => 'required',
-            'Password' => 'required|confirmed',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->getMessageBag()], 422);
-        }
-
+        $appUsersRequest->validate($request);
         AppUsers::create($request->except(['Password_confirmation']));
 
         return response(['created' => true], 200);
@@ -72,16 +62,16 @@ class AppUsersController extends Controller
     }
 
     /**
-     * Updates a resource.
-     *
      * @param $id
      * @param Request $request
-     *
+     * @param AppUsersRequest $appUsersRequest
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     * @throws ValidationFailedException
      */
-    public function update($id, Request $request)
+    public function update($id, Request $request, AppUsersRequest $appUsersRequest)
     {
-        AppUsers::findOrFail($id)->update($request->all());
+        $appUsersRequest->validate($request);
+        AppUsers::findOrFail($id)->update($request->except(['Password_confirmation']));
 
         return response(['message' => 'Resource Updated'], 200);
     }
