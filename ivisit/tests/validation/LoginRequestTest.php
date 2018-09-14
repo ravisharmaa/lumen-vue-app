@@ -6,6 +6,12 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginRequestTest extends TestCase
 {
+    public function tearDown()
+    {
+        parent::tearDown();
+        Mockery::close();
+    }
+
     /**
      * @test
      * @expectedException \App\Exceptions\ValidationFailedException

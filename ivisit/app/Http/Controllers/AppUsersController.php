@@ -36,9 +36,11 @@ class AppUsersController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param Request         $request
      * @param AppUsersRequest $appUsersRequest
+     *
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     *
      * @throws ValidationFailedException
      */
     public function store(Request $request, AppUsersRequest $appUsersRequest)
@@ -63,9 +65,11 @@ class AppUsersController extends Controller
 
     /**
      * @param $id
-     * @param Request $request
+     * @param Request         $request
      * @param AppUsersRequest $appUsersRequest
+     *
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     *
      * @throws ValidationFailedException
      */
     public function update($id, Request $request, AppUsersRequest $appUsersRequest)

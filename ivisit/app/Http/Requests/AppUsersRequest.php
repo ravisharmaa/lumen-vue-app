@@ -16,6 +16,7 @@ class AppUsersRequest extends ValidationRequest
 {
     /**
      * @param Request $request
+     *
      * @throws ValidationFailedException
      */
     public function validate(Request $request)
