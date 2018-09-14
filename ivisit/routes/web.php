@@ -12,11 +12,12 @@
 */
 
 $router->post('/login', 'AuthController@login');
+
+//AppUsersRoute
 $router->get('app-users', 'AppUsersController@index');
-$router->post('app-users/store','AppUsersController@store');
+$router->post('app-users/store', 'AppUsersController@store');
 $router->get('app-users/{id}/edit', 'AppUsersController@edit');
 $router->put('app-users/{id}/update', 'AppUsersController@update');
 
-
-
-
+//SurveyRoutes
+$router->get('surveys','SurveysController@index');
