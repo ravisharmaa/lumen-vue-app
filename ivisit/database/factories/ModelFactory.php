@@ -45,8 +45,22 @@ $factory->state(App\AppUsers::class, 'password_confirmation', [
     'Password_confirmation' => '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',
 ]);
 
+$factory->define(App\Heading::class, function (Faker\Generator $faker) {
+   return [
+     'heading'=>$faker->sentence
+   ];
+});
+
+
 $factory->define(App\Survey::class, function (Faker\Generator $faker) {
     return [
-        'question' => $faker->sentence,
+        'Question' => $faker->sentence,
+        'CreatedBy' => $faker->email,
+        'CreatedDate' => \Carbon\Carbon::parse('+2 week'),
+        'ChangedBy' => $faker->email,
+        'ChangedDate' => \Carbon\Carbon::parse('+1 week'),
+        'headingid' => function () {
+            return factory(App\Heading::class)->create()->id();
+        },
    ];
 });

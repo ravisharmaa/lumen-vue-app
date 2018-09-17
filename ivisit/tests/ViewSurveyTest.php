@@ -35,7 +35,7 @@ class ViewSurveyTest extends TestCase
      */
     public function authorized_user_can_browse_surveys()
     {
-        $this->markTestSkipped();
+
         $this->disableExceptionHandling()->actingAs($this->user);
 
         factory(App\Survey::class, 3)->create();
