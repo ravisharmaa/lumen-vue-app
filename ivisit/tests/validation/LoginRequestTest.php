@@ -16,7 +16,7 @@ class LoginRequestTest extends TestCase
      * @test
      * @expectedException \App\Exceptions\ValidationFailedException
      */
-    public function that_an_exception_is_thrown_if_validation_fails()
+    public function exception_is_thrown_if_validation_fails()
     {
         $request = Mockery::mock(Request::class);
 
