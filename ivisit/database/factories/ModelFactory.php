@@ -64,3 +64,7 @@ $factory->define(App\Survey::class, function (Faker\Generator $faker) {
         },
    ];
 });
+
+$factory->state(\App\Survey::class, 'without_heading',[
+    'headingid'=>null
+]);

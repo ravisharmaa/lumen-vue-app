@@ -14,11 +14,18 @@ class Heading extends Model
     public $timestamps = false;
 
 
+
+
     protected $guarded = [];
 
     public function surveys()
     {
-        return $this->hasMany(Survey::class);
+        return $this->hasMany(Survey::class,'headingid');
+    }
+
+    public function addSurvey($survey)
+    {
+        return $this->surveys()->create($survey);
     }
 
 }
