@@ -13,7 +13,12 @@ class Heading extends Model
     protected $table = 'tbl_iSurveyHeading';
     public $timestamps = false;
 
+
     protected $guarded = [];
 
+    public function surveys()
+    {
+        return $this->hasMany(Survey::class);
+    }
 
 }

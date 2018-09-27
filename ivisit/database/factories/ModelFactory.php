@@ -60,7 +60,7 @@ $factory->define(App\Survey::class, function (Faker\Generator $faker) {
         'ChangedBy' => $faker->email,
         'ChangedDate' => \Carbon\Carbon::parse('+1 week'),
         'headingid' => function () {
-            return factory(App\Heading::class)->create()->id();
+            return factory(App\Heading::class)->create()->id;
         },
    ];
 });

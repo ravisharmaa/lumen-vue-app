@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Survey;
+
 class SurveysController extends Controller
 {
     /**
@@ -13,8 +15,18 @@ class SurveysController extends Controller
         $this->middleware('jwt.auth');
     }
 
+    /**
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
+     */
     public function index()
     {
-        return null;
+        $surveys = Survey::all();
+
+        return response(['surveys' => $surveys], 200);
+    }
+
+    public function store()
+    {
+
     }
 }

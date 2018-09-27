@@ -21,3 +21,5 @@ $router->put('app-users/{id}/update', 'AppUsersController@update');
 
 //SurveyRoutes
 $router->get('surveys','SurveysController@index');
+$router->post('surveys','SurveysController@store');
+

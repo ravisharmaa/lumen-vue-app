@@ -10,5 +10,13 @@ class Survey extends Model
     protected $table = 'tbl_iSurveyQuestion';
     public $timestamps = false;
 
+    protected $with = ['heading'];
+
     protected $guarded = [];
+
+
+    public function heading()
+    {
+        return $this->belongsTo(Heading::class,'headingid');
+    }
 }

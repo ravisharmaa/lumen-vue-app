@@ -2,7 +2,7 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 
-class ViewSurveyTest extends TestCase
+class ViewSurveysTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -22,20 +22,11 @@ class ViewSurveyTest extends TestCase
             ->assertResponseStatus(401);
     }
 
-    /** @test */
-    public function authenticated_users_must_provide_a_valid_token()
-    {
-        $this->actingAs($this->user)->json('GET', '/surveys', ['HTTP_Authorization' => ''])
-            ->seeJsonEquals(['message' => 'token_not_found'])
-            ->assertResponseStatus(404);
-    }
-
     /**
      * @test
      */
-    public function authorized_user_can_browse_surveys()
+    public function authorized_user_can_view_surveys()
     {
-
         $this->disableExceptionHandling()->actingAs($this->user);
 
         factory(App\Survey::class, 3)->create();
@@ -45,6 +36,4 @@ class ViewSurveyTest extends TestCase
 
         $this->assertNotEmpty($data['surveys']);
     }
-
-
 }
