@@ -34,5 +34,9 @@ class HeadingTest extends TestCase
         $survey = factory(Survey::class)->state('without_heading')->make();
 
         $headings->addSurvey($survey->toArray());
+
+        $newSurvey = Survey::all()->toArray();
+
+        $this->assertNotEmpty($newSurvey['0']['heading']);
     }
 }

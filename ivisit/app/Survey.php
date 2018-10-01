@@ -12,12 +12,10 @@ class Survey extends Model
 
     protected $with = ['heading'];
 
-
     protected $guarded = [];
-
 
     public function heading()
     {
-        return $this->belongsTo(Heading::class,'headingid');
+        return $this->belongsTo(Heading::class, 'headingid');
     }
 }
