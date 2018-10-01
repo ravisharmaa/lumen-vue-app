@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
         }
 
         if ($e instanceof UserNotFoundException) {
-            return response()->json(['message' => 'Sorry try again'], 404);
+            return response()->json(['message' => 'Sorry! you are not registered, try again'], 404);
         }
 
         return parent::render($request, $e);

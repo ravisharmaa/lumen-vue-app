@@ -20,4 +20,6 @@ class SurveyTest extends TestCase
     {
         $this->assertInstanceOf(\App\Heading::class, $this->survey->heading);
     }
+
+
 }

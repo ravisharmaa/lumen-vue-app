@@ -35,8 +35,8 @@ class HeadingTest extends TestCase
 
         $headings->addSurvey($survey->toArray());
 
-        $newSurvey = Survey::all()->toArray();
+        $newSurvey = Survey::all();
 
-        $this->assertNotEmpty($newSurvey['0']['heading']);
+        $this->assertCount(1, $newSurvey->heading);
     }
 }

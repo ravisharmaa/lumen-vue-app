@@ -9,6 +9,7 @@ class Survey extends Model
     protected $primaryKey = 'QId';
     protected $table = 'tbl_iSurveyQuestion';
     public $timestamps = false;
+    protected $hidden = ['headingid'];
 
     protected $with = ['heading'];
 

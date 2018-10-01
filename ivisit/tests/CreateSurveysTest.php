@@ -31,9 +31,9 @@ class CreateSurveysTest extends TestCase
     {
         $this->disableExceptionHandling()->actingAs($this->user);
 
-        $heading = factory(\App\Heading::class)->create();
-        $survey = factory(\App\Survey::class)->state('without_heading')->make();
+        $heading = factory(\App\Heading::class)->create()->toArray();
+        $survey = factory(\App\Survey::class)->state('without_heading')->make()->toArray();
 
-        $this->postAsAuthenticated('survyes', '');
+
     }
 }

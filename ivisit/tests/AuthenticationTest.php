@@ -26,7 +26,7 @@ class AuthenticationTest extends TestCase
     public function guests_cannot_receive_a_token()
     {
         $this->json('POST', '/login', ['email' => 'nonexisting@example.com', 'password' => 'hello123'])
-            ->seeJsonContains(['message' => 'Sorry try again'])
+            ->seeJsonContains(['message' => 'Sorry! you are not registered, try again'])
             ->seeStatusCode(404);
     }
 
