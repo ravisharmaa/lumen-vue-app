@@ -12,7 +12,9 @@ class CreateSurveysTest extends TestCase
         $this->user = factory(App\User::class)->create();
     }
 
-    /** @test */
+    /**
+     * @test
+     * */
     public function guest_cannot_create_surveys()
     {
         $this->disableExceptionHandling();
@@ -22,5 +24,16 @@ class CreateSurveysTest extends TestCase
             ->assertResponseStatus(401);
     }
 
-   
+    /**
+     * @test
+     */
+    public function authorised_user_can_create_surveys()
+    {
+        $this->disableExceptionHandling()->actingAs($this->user);
+
+        $heading = factory(\App\Heading::class)->create();
+        $survey = factory(\App\Survey::class)->state('without_heading')->make();
+
+        $this->postAsAuthenticated('survyes', '');
+    }
 }
