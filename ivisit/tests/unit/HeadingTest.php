@@ -27,7 +27,7 @@ class HeadingTest extends TestCase
     /**
      * @test
      */
-    public function can_be_attached_to_surveys()
+    public function can_add_surveys()
     {
         $headings = factory(Heading::class)->create();
 
